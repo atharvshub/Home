@@ -1,0 +1,286 @@
+/*
+    Custom Styles for Atharv's Hub
+    Dark Theme & Modern Design
+*/
+
+/* 1. Global Dark Theme Setup */
+:root {
+    --primary-color: #2ED9FF; 
+    --whatsapp-green: #25D366; 
+    --background-dark: #121212; 
+    --section-alt-dark: #1E1E1E; 
+    --card-dark: #2A2A2A; 
+    --text-light: #F8F9FA; 
+    --text-muted: #ADB5BD; 
+    --overlay-dark: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Override Bootstrap Section Styling */
+.page-section {
+    padding: 8rem 0; 
+}
+
+/* Set the alternate dark background for the Projects section */
+#projects {
+    background-color: var(--section-alt-dark); 
+}
+
+.page-section h2.section-heading {
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.page-section h3.section-subheading {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-muted) !important;
+}
+
+/* 2. Navigation Styling */
+#mainNav {
+    background-color: rgba(18, 18, 18, 0.95); 
+    border-bottom: 1px solid var(--card-dark);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: padding-top 0.3s, padding-bottom 0.3s, background-color 0.3s;
+}
+
+#mainNav .navbar-brand {
+    /* Reset font size on brand text, as the logo is handled below */
+    font-size: 1.5rem; 
+    color: var(--primary-color);
+}
+
+
+/* --- LOGO STYLING (NEW) --- */
+#logo-circle {
+    /* Reduced default size from 40px to 35px */
+    width: 35px; 
+    height: 35px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid var(--primary-color); 
+    transition: width 0.3s, height 0.3s, border-width 0.3s;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Navigation Shrink Effect Styling (Used by JavaScript) */
+#mainNav.navbar-shrink {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: var(--background-dark);
+    border-bottom: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#mainNav.navbar-shrink .navbar-brand {
+    font-size: 1.25rem;
+}
+
+/* SHRINK LOGO SIZE ON SCROLL */
+#mainNav.navbar-shrink #logo-circle {
+    width: 30px; 
+    height: 30px;
+}
+/* -------------------------- */
+
+
+/* 3. Header/Hero Section Styling */
+.masthead {
+    position: relative; 
+    height: 100vh;
+    background-image: url('bg.jpg'); 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center center;
+    background-size: cover; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white; 
+}
+
+/* Overlay for readability */
+.masthead::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay-dark); 
+    z-index: 1; 
+}
+
+.masthead > .container {
+    position: relative;
+    z-index: 2; 
+}
+
+.masthead h1 {
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+.masthead p {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
+}
+
+/* 4. Project Card Styling */
+#projects .project-item .card {
+    background-color: var(--card-dark);
+    border: 1px solid #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#projects .project-item .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+#projects .project-item .card-title {
+    color: var(--primary-color);
+}
+
+#projects .project-item .card-text {
+    color: var(--text-muted) !important;
+}
+
+/* 5. Contact Button Styling */
+.btn-primary, .btn-contact-email {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--background-dark) !important;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-contact-email:hover {
+    background-color: #00BFFF;
+    border-color: #00BFFF;
+    transform: translateY(-2px);
+}
+
+.btn-contact-whatsapp {
+    background-color: var(--whatsapp-green);
+    border-color: var(--whatsapp-green);
+    color: white !important;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-contact-whatsapp:hover {
+    background-color: #1DA84E;
+    border-color: #1DA84E;
+    transform: translateY(-2px);
+}
+
+/* 6. Footer Styling */
+.footer {
+    background-color: var(--section-alt-dark);
+    color: var(--text-muted);
+}
+
+.developer-masthead {
+    height: 90vh; /* Slightly less than 100vh for developer page */
+    background-image: url('../img/developer-bg.jpg'); /* Optional: different background image for developer page */
+    background-color: var(--background-dark); /* Fallback if image not found */
+}
+
+.developer-photo-large {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 5px solid var(--primary-color); /* Neon border for photo */
+    box-shadow: 0 0 15px rgba(46, 217, 255, 0.5); /* Glowing effect */
+}
+
+.social-icons .btn-dark {
+    background-color: var(--card-dark);
+    border-color: var(--card-dark);
+    color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons .btn-dark:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--background-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(46, 217, 255, 0.4);
+}
+
+.skills-list {
+    margin-top: 30px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Space between skill items */
+}
+
+.skills-list li {
+    background-color: var(--card-dark);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 25px; /* Pill shape */
+    border: 1px solid var(--primary-color);
+    font-weight: 700;
+    list-style: none; /* Remove bullet points */
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.skills-list li i {
+    font-size: 1.1rem; /* Adjust icon size */
+    color: var(--primary-color); /* Ensure icon color matches */
+}
+
+/* 5. Orders Section Styling (NEW) */
+.order-card {
+    background-color: #F8F9FA /* Card color */
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.order-card:hover {
+    border-color: var(--primary-color);
+}
+
+.btn-order-whatsapp {
+    background-color: var(--whatsapp-green);
+    border-color: var(--whatsapp-green);
+    color: white !important;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    width: 100%; /* Full width button */
+    margin-top: auto;
+}
+
+.btn-order-whatsapp:hover {
+    background-color: #1DA84E;
+    border-color: #1DA84E;
+    transform: scale(1.02);
+}
