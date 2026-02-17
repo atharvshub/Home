@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atharv's Hub | Moving</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff007a;
+            --secondary: #7000ff;
+            --bg: #030008;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Animated Mesh Gradient Background */
+        .mesh {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            filter: blur(50px);
+            animation: meshMove 15s infinite alternate;
+        }
+
+        @keyframes meshMove {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        .container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3.5rem;
+            border-radius: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+        }
+
+        /* Staggered Entrance Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealUp 0.8s forwards;
+        }
+
+        @keyframes revealUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header { animation-delay: 0.2s; }
+        .sub { animation-delay: 0.4s; margin-bottom: 2rem; color: #888; }
+        .loader-wrap { animation-delay: 0.6s; margin: 2rem 0; }
+        .url-btn { animation-delay: 0.8s; }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Modern Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform-origin: left;
+            animation: shrink 5s linear forwards;
+        }
+
+        @keyframes shrink {
+            from { transform: scaleX(1); }
+            to { transform: scaleX(0); }
+        }
+
+        .url-tag {
+            display: inline-block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .main-link {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 5px;
+            transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .main-link:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .footer-text {
+            margin-top: 2.5rem;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="mesh"></div>
+
+    <div class="container">
+        <div class="reveal header">
+            <span class="url-tag">New Destination</span>
+            <h1>Atharv's Hub</h1>
+        </div>
+        
+        <p class="reveal sub">We've migrated to a new digital space. Hold tight while we teleport you.</p>
+
+        <div class="reveal loader-wrap">
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p style="margin-top: 10px; font-size: 12px; color: #666;">REDIRECTING IN <span id="timer">5</span>s</p>
+        </div>
+
+        <div class="reveal url-btn">
+            <a href="http://atharvshub.42web.io" class="main-link">atharvshub.42web.io</a>
+        </div>
+
+        <p class="reveal footer-text">If you aren't redirected automatically, click the link above.</p>
+    </div>
+
+    <script>
+        const target = "http://atharvshub.42web.io";
+        let count = 5;
+        const timerDisplay = document.getElementById('timer');
+
+        const countdown = setInterval(() => {
+            count--;
+            timerDisplay.textContent = count;
+            if (count <= 0) {
+                clearInterval(countdown);
+                window.location.href = target;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
